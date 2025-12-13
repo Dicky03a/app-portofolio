@@ -5,7 +5,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, ChartColumnIncreasing, DockIcon, FileCheck, Folder, FolderGit2, GraduationCap, LayoutGrid, MailCheck } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -13,6 +13,36 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'About',
+        href: '/about',
+        icon: DockIcon,
+    },
+    {
+        title: 'Education',
+        href: '/education',
+        icon: GraduationCap,
+    },
+    {
+        title: 'Skils',
+        href: '/skils',
+        icon: ChartColumnIncreasing,
+    },
+    {
+        title: 'Certificate',
+        href: '/certificate',
+        icon: FileCheck,
+    },
+    {
+        title: 'Projects',
+        href: '/projects',
+        icon: FolderGit2,
+    },
+    {
+        title: 'Testimonial',
+        href: '/testimonial',
+        icon: MailCheck,
     },
 ];
 
