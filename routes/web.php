@@ -37,6 +37,17 @@ Route::middleware([
     Route::get('/education', [EducationController::class, 'index'])
         ->name('education.index');
 
+    Route::post('/education', [EducationController::class, 'store'])
+        ->name('education.store');
+
+    Route::put('/education/{education}', [EducationController::class, 'update'])
+        ->name('education.update');
+
+    Route::delete('/education/{education}', [EducationController::class, 'destroy'])
+        ->name('education.destroy');
+
+    // Route Education End
+
 
     // Route Skills
     Route::get('/skils', [SkillsController::class, 'index'])
