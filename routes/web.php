@@ -23,17 +23,35 @@ Route::middleware([
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
-
+    // Route About
     Route::get('/about', [AboutController::class, 'index'])
         ->name('about.index');
+    Route::get('/about/create', [AboutController::class, 'create'])
+        ->name('about.create');
+    // Route About End
+
+    
+    // Route Education
     Route::get('/education', [EducationController::class, 'index'])
         ->name('education.index');
+
+
+    // Route Skills
     Route::get('/skils', [SkillsController::class, 'index'])
         ->name('skils.index');
+
+
+    // Route Certificate
     Route::get('/certificate', [CertificatesController::class, 'index'])
         ->name('certificate.index');
+
+
+    // Route Projects
     Route::get('/projects', [ProjectsController::class, 'index'])
         ->name('projects.index');
+
+
+    // Route Testimonial
     Route::get('/testimonial', [TestimonialsController::class, 'index'])
         ->name('testimonial.index');
 });

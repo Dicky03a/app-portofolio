@@ -11,4 +11,9 @@ class AboutController extends Controller
     {
         return Inertia::render('About/index', []);
     }
+
+    public function create()
+    {
+        return Inertia::render('About/create');
+    }
 }

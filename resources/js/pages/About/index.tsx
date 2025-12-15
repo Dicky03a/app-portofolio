@@ -10,14 +10,14 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function index() {
+export default function Index() {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="About" />
-            <div className='m-4'>
-                <Link href="()">
-                    <Button>Add About</Button>
-                </Link>
+            <div className="m-4">
+                <Button asChild>
+                    <Link href="/about/create">Add About</Link>
+                </Button>
             </div>
         </AppLayout>
     );
