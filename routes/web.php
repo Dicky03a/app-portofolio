@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\TestimonialsController;
@@ -11,9 +12,8 @@ use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 use PHPUnit\Metadata\Test;
 
-Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::middleware([
     'auth',
@@ -26,11 +26,13 @@ Route::middleware([
     // Route About
     Route::get('/about', [AboutController::class, 'index'])
         ->name('about.index');
-    Route::get('/about/create', [AboutController::class, 'create'])
-        ->name('about.create');
+    Route::get('/about/{id}/edit', [AboutController::class, 'edit'])
+        ->name('about.edit');
+    Route::match(['put', 'patch'], '/about/{id}', [AboutController::class, 'update'])
+        ->name('about.update');
     // Route About End
 
-    
+
     // Route Education
     Route::get('/education', [EducationController::class, 'index'])
         ->name('education.index');
