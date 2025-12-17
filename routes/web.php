@@ -36,14 +36,15 @@ Route::middleware([
     // Route Education
     Route::get('/education', [EducationController::class, 'index'])
         ->name('education.index');
-
+    Route::get('/education/create', [EducationController::class, 'create'])
+        ->name('education.create');
     Route::post('/education', [EducationController::class, 'store'])
         ->name('education.store');
-
-    Route::put('/education/{education}', [EducationController::class, 'update'])
+    Route::get('/education/{id}/edit', [EducationController::class, 'edit'])
+        ->name('education.edit');
+    Route::match(['put', 'patch'], '/education/{id}', [EducationController::class, 'update'])
         ->name('education.update');
-
-    Route::delete('/education/{education}', [EducationController::class, 'destroy'])
+    Route::delete('/education/{id}', [EducationController::class, 'destroy'])
         ->name('education.destroy');
 
     // Route Education End
