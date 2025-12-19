@@ -36,7 +36,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects = [] }) => {
                 >
                     <div>
                         <h2 className="font-display mb-4 text-4xl font-bold text-white md:text-5xl">
-                            Featured <br /> <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Projects</span>
+                            Featured <br /> Projects
                         </h2>
                         <p className="max-w-md text-lg text-gray-400">My latest work, designed with precision and built for performance.</p>
                     </div>

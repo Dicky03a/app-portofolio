@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CertificatesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectsController;
@@ -14,6 +15,8 @@ use PHPUnit\Metadata\Test;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Public contact route
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 Route::middleware([
     'auth',
