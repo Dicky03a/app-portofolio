@@ -60,7 +60,7 @@ const Certificates: React.FC = () => {
                             className="glass-panel group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 p-6 transition-all hover:bg-white/5"
                         >
                             {/* Hover Glow */}
-                            <div className="absolute top-0 right-0 h-32 w-32 translate-x-10 -translate-y-10 rounded-full bg-white/5 blur-[40px] transition-colors group-hover:bg-primary/10" />
+                           
 
                             {/* Icon */}
                             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 text-yellow-400 shadow-inner transition-transform group-hover:scale-110">
