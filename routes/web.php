@@ -51,13 +51,34 @@ Route::middleware([
 
 
     // Route Skills
-    Route::get('/skils', [SkillsController::class, 'index'])
-        ->name('skils.index');
+    Route::get('/skills', [SkillsController::class, 'index'])
+        ->name('skills.index');
+    Route::get('/skills/create', [SkillsController::class, 'create'])
+        ->name('skills.create');
+    Route::post('/skills', [SkillsController::class, 'store'])
+        ->name('skills.store');
+    Route::get('/skills/{id}/edit', [SkillsController::class, 'edit'])
+        ->name('skills.edit');
+    Route::match(['put', 'patch'], '/skills/{id}', [SkillsController::class, 'update'])
+        ->name('skills.update');
+    Route::delete('/skills/{id}', [SkillsController::class, 'destroy'])
+        ->name('skills.destroy');
+    // Route Skills End
 
 
     // Route Certificate
-    Route::get('/certificate', [CertificatesController::class, 'index'])
-        ->name('certificate.index');
+    Route::get('/certificates', [CertificatesController::class, 'index'])
+        ->name('certificates.index');
+    Route::get('/certificates/create', [CertificatesController::class, 'create'])
+        ->name('certificates.create');
+    Route::post('/certificates', [CertificatesController::class, 'store'])
+        ->name('certificates.store');
+    Route::get('/certificates/{id}/edit', [CertificatesController::class, 'edit'])
+        ->name('certificates.edit');
+    Route::match(['put', 'patch'], '/certificates/{id}', [CertificatesController::class, 'update'])
+        ->name('certificates.update');
+    Route::delete('/certificates/{id}', [CertificatesController::class, 'destroy'])
+        ->name('certificates.destroy');
 
 
     // Route Projects

@@ -31,7 +31,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Index() {
-    const { educations, flash } = usePage().props as PageProps;
+    const { educations, flash } = usePage<PageProps>().props;
     const [deletingId, setDeletingId] = useState<number | null>(null);
 
     const handleDelete = (id: number) => {

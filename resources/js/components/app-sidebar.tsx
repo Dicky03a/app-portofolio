@@ -25,13 +25,13 @@ const mainNavItems: NavItem[] = [
         icon: GraduationCap,
     },
     {
-        title: 'Skils',
-        href: '/skils',
+        title: 'Skills',
+        href: '/skills',
         icon: ChartColumnIncreasing,
     },
     {
         title: 'Certificate',
-        href: '/certificate',
+        href: '/certificates',
         icon: FileCheck,
     },
     {
