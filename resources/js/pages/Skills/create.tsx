@@ -8,7 +8,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 interface SkillFormData {
     name: string;
     percentage: number;
-    icon?: File | null;
+    icon: File | null;
 }
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -23,7 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Create() {
-    const { data, setData, post, processing, errors } = useForm<SkillFormData>({
+    const { data, setData, post, processing, errors, clearErrors } = useForm<SkillFormData>({
         name: '',
         percentage: 0,
         icon: null,
@@ -31,8 +31,21 @@ export default function Create() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Create FormData to handle file upload
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('percentage', data.percentage.toString());
+        if (data.icon) {
+            formData.append('icon', data.icon);
+        }
+
         post('/skills', {
+            data: formData,
             forceFormData: true,
+            onError: () => {
+                // Errors are handled by the backend validation
+            }
         });
     };
 
@@ -81,8 +94,20 @@ export default function Create() {
                             type="file"
                             id="icon"
                             accept="image/*"
-                            onChange={(e) => setData('icon', e.target.files?.[0] ?? null)}
+                            onChange={(e) => {
+                                if (e.target.files && e.target.files[0]) {
+                                    setData('icon', e.target.files[0]);
+                                    clearErrors('icon'); // Clear error when user selects file
+                                } else {
+                                    setData('icon', null);
+                                }
+                            }}
                         />
+                        {data.icon && (
+                            <div className="mt-2 text-sm text-gray-600">
+                                Selected file: {data.icon.name}
+                            </div>
+                        )}
                     </div>
 
                     <div className="flex gap-2">

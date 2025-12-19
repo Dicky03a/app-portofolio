@@ -10,7 +10,8 @@ interface Skill {
     id: number;
     name: string;
     percentage: number;
-    icon?: string | null;
+    icon: string | null;
+    icon_url: string | null;
 }
 
 interface PageProps {
@@ -91,8 +92,17 @@ export default function Index() {
                                     <TableCell>{skill.name}</TableCell>
                                     <TableCell>{skill.percentage}%</TableCell>
                                     <TableCell>
-                                        {skill.icon ? (
-                                            <img src={skill.icon} alt={skill.name} className="w-6 h-6" />
+                                        {skill.icon_url ? (
+                                            <img
+                                                src={skill.icon_url}
+                                                alt={skill.name}
+                                                className="w-6 h-6"
+                                                onError={(e) => {
+                                                    const target = e.target as HTMLImageElement;
+                                                    target.onerror = null; // avoids infinite loop if placeholder also fails
+                                                    target.src = '/default-icon.png'; // fallback
+                                                }}
+                                            />
                                         ) : (
                                             <span className="text-gray-400">No icon</span>
                                         )}

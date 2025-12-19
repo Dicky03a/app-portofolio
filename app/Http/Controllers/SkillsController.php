@@ -14,8 +14,25 @@ class SkillsController extends Controller
      */
     public function index()
     {
+        $skills = Skills::orderBy('created_at', 'desc')->get();
+
+        // Transform skills to include icon URLs
+        $skills = $skills->map(function ($skill) {
+            return [
+                'id' => $skill->id,
+                'name' => $skill->name,
+                'percentage' => $skill->percentage,
+                'icon' => $skill->icon,
+                'icon_url' => $skill->icon_url,
+            ];
+        });
+
         return Inertia::render('Skills/index', [
-            'skills' => Skills::all(),
+            'skills' => $skills,
+            'flash' => [
+                'success' => session('success'),
+                'error' => session('error'),
+            ]
         ]);
     }
 
@@ -58,13 +75,17 @@ class SkillsController extends Controller
      */
     public function edit(Skills $skill)
     {
+        // Transform skill to ensure icon_url is available for the edit view
+        $skillData = [
+            'id' => $skill->id,
+            'name' => $skill->name,
+            'percentage' => $skill->percentage,
+            'icon' => $skill->icon,
+            'icon_url' => $skill->icon_url,
+        ];
+
         return Inertia::render('Skills/edit', [
-            'skill' => [
-                'id' => $skill->id,
-                'name' => $skill->name,
-                'percentage' => $skill->percentage,
-                'icon' => $skill->icon_url,
-            ]
+            'skill' => $skillData
         ]);
     }
 

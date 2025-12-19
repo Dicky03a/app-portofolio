@@ -9,7 +9,8 @@ interface Skill {
     id: number;
     name: string;
     percentage: number;
-    icon?: string | null;
+    icon: string | null;
+    icon_url: string | null;
 }
 
 interface Props {
@@ -28,16 +29,30 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Edit({ skill }: Props) {
-    const { data, setData, patch, processing, errors } = useForm({
+    const { data, setData, post, processing, errors, clearErrors } = useForm({
         name: skill.name || '',
         percentage: skill.percentage || 0,
-        icon: '', // We don't send the existing icon file, just set to empty string
+        icon: null as File | null, // Don't pre-populate with existing file
     });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        patch(`/skills/${skill.id}`, {
+
+        // Create FormData to handle file upload
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('percentage', data.percentage.toString());
+        if (data.icon) {
+            formData.append('icon', data.icon);
+        }
+        formData.append('_method', 'PATCH'); // Laravel convention for PUT/PATCH via form
+
+        post(`/skills/${skill.id}`, {
+            data: formData,
             forceFormData: true,
+            onError: () => {
+                // Errors are handled by the backend validation
+            }
         });
     };
 
@@ -86,12 +101,36 @@ export default function Edit({ skill }: Props) {
                             type="file"
                             id="icon"
                             accept="image/*"
-                            onChange={(e) => setData('icon', e.target.files?.[0] ?? null)}
+                            onChange={(e) => {
+                                if (e.target.files && e.target.files[0]) {
+                                    setData('icon', e.target.files[0]);
+                                    clearErrors('icon'); // Clear error when user selects file
+                                } else {
+                                    setData('icon', null);
+                                }
+                            }}
                         />
-                        {skill.icon && (
+                        {data.icon ? (
+                            <div className="mt-2 text-sm text-gray-600">
+                                Selected file: {data.icon.name}
+                            </div>
+                        ) : (
                             <div className="mt-2">
-                                <p>Current Icon:</p>
-                                <img src={skill.icon} alt="Current skill icon" className="w-8 h-8" />
+                                <p className="text-sm text-gray-600">Current Icon:</p>
+                                {skill.icon_url ? (
+                                    <img
+                                        src={skill.icon_url}
+                                        alt="Current skill icon"
+                                        className="mt-1 w-8 h-8"
+                                        onError={(e) => {
+                                            const target = e.target as HTMLImageElement;
+                                            target.onerror = null; // avoids infinite loop if placeholder also fails
+                                            target.src = '/default-icon.png'; // fallback
+                                        }}
+                                    />
+                                ) : (
+                                    <span className="text-gray-400 text-sm">No icon uploaded</span>
+                                )}
                             </div>
                         )}
                     </div>

@@ -8,26 +8,30 @@ interface Skill {
     id: number;
     name: string;
     percentage: number;
-    icon?: string; // URL atau emoji
+    icon?: string; // path to stored file
+    icon_url?: string; // full URL to the icon
 }
 
 // Component for rendering individual skill icons with error handling
 const SkillIcon = ({ skill }: { skill: Skill }) => {
     const [hasError, setHasError] = useState(false);
 
-    if (hasError || !skill.icon) {
+    // Use icon_url if available, otherwise fall back to icon
+    const iconToDisplay = skill.icon_url || skill.icon;
+
+    if (hasError || !iconToDisplay) {
         return '⚡';
     }
 
     // Check if the icon is an image URL (external URL or asset path)
-    const isImageUrl = skill.icon.startsWith('http') ||
-        skill.icon.startsWith('/') ||
-        skill.icon.startsWith('data:image/');
+    const isImageUrl = iconToDisplay.startsWith('http') ||
+        iconToDisplay.startsWith('/') ||
+        iconToDisplay.startsWith('data:image/');
 
     if (isImageUrl) {
         return (
             <img
-                src={skill.icon}
+                src={iconToDisplay}
                 alt={skill.name}
                 className="h-8 w-8 object-contain"
                 onError={() => setHasError(true)}
@@ -35,7 +39,7 @@ const SkillIcon = ({ skill }: { skill: Skill }) => {
         );
     } else {
         // Treat as emoji or text icon
-        return <span>{skill.icon}</span>;
+        return <span>{iconToDisplay}</span>;
     }
 };
 
