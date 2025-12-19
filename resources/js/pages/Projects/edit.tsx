@@ -35,7 +35,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ];
 
 export default function Edit({ project }: Props) {
-    const { data, setData, post, processing, errors, clearErrors } = useForm({
+    const { data, setData, patch, processing, errors, clearErrors } = useForm({
         title: project.title || '',
         tech_stack: project.tech_stack || '',
         thumbnail: null as File | null, // Don't pre-populate with existing file
@@ -57,9 +57,8 @@ export default function Edit({ project }: Props) {
         formData.append('short_description', data.short_description);
         formData.append('github_url', data.github_url || '');
         formData.append('demo_url', data.demo_url || '');
-        formData.append('_method', 'PATCH'); // Laravel convention for PUT/PATCH via form
 
-        post(`/projects/${project.id}`, {
+        patch(`/projects/${project.id}`, {
             data: formData,
             forceFormData: true,
             onError: () => {

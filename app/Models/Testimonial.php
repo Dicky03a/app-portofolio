@@ -13,10 +13,12 @@ class Testimonial extends Model
         'avatar',
     ];
 
+    protected $appends = ['avatar_url'];
+
     public function getAvatarUrlAttribute()
     {
-        if ($this->avatar) {
-            return asset($this->avatar);
+        if ($this->avatar && \Storage::disk('public')->exists($this->avatar)) {
+            return \Storage::url($this->avatar);
         }
         return asset('default-avatar.png'); // fallback image
     }

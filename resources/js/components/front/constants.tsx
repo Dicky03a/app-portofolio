@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
-import { Certificate, EducationItem, Project, Skill, SocialLink, Testimonial } from '../../types';
+import { Certificate, EducationItem, Skill, SocialLink } from '../../types';
 
 export const HERO_CONTENT = {
     greeting: "Hello, I'm",
@@ -71,71 +71,6 @@ export const CERTIFICATES: Certificate[] = [
         issuer: 'freeCodeCamp',
         date: '2021',
         link: '#',
-    },
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-    {
-        id: 1,
-        name: 'Sarah Johnson',
-        role: 'Project Manager at TechCorp',
-        content:
-            'Dicky is an exceptional developer who delivers high-quality code. His attention to detail and ability to solve complex problems is impressive.',
-        avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
-    },
-    {
-        id: 2,
-        name: 'Michael Chen',
-        role: 'Senior Developer',
-        content: 'Working with Dicky was a pleasure. He is a quick learner and always stays up-to-date with the latest technologies.',
-        avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
-    },
-    {
-        id: 3,
-        name: 'Emily Davis',
-        role: 'Startup Founder',
-        content:
-            'Dicky transformed our vision into a stunning reality. His design sense coupled with technical skills makes him a unicorn developer.',
-        avatar: 'https://i.pravatar.cc/150?u=a04258114e29026302d',
-    },
-];
-
-export const PROJECTS: Project[] = [
-    {
-        id: 1,
-        title: 'E-Commerce Dashboard',
-        description: 'A comprehensive dashboard for managing online store inventory and analytics using React and Recharts.',
-        image: 'https://picsum.photos/600/400?random=1',
-        tags: ['React', 'Tailwind', 'Recharts'],
-        link: '#',
-        github: '#',
-    },
-    {
-        id: 2,
-        title: 'Student Portal',
-        description: 'An academic information system for students to track grades and schedules.',
-        image: 'https://picsum.photos/600/400?random=2',
-        tags: ['TypeScript', 'Node.js', 'PostgreSQL'],
-        link: '#',
-        github: '#',
-    },
-    {
-        id: 3,
-        title: 'Portfolio v1',
-        description: 'My first personal portfolio website showcasing early web development experiments.',
-        image: 'https://picsum.photos/600/400?random=3',
-        tags: ['HTML', 'CSS', 'JavaScript'],
-        link: '#',
-        github: '#',
-    },
-    {
-        id: 4,
-        title: 'Task Management App',
-        description: 'A productivity tool with drag-and-drop features to manage daily tasks efficiently.',
-        image: 'https://picsum.photos/600/400?random=4',
-        tags: ['React', 'Redux', 'Framer Motion'],
-        link: '#',
-        github: '#',
     },
 ];
 

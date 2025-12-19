@@ -13,12 +13,6 @@ class TestimonialsController extends Controller
     {
         $testimonials = Testimonial::orderBy('created_at', 'desc')->get();
 
-        // Transform testimonials to include avatar URLs
-        $testimonials = $testimonials->map(function ($testimonial) {
-            $testimonial->avatar_url = $testimonial->avatar ? Storage::url($testimonial->avatar) : asset('default-avatar.png');
-            return $testimonial;
-        });
-
         return Inertia::render('Testimonials/index', [
             'testimonials' => $testimonials,
             'flash' => [
@@ -56,9 +50,6 @@ class TestimonialsController extends Controller
     public function edit($id)
     {
         $testimonial = Testimonial::findOrFail($id);
-
-        // Add avatar URL for the edit view
-        $testimonial->avatar_url = $testimonial->avatar ? Storage::url($testimonial->avatar) : asset('default-avatar.png');
 
         return Inertia::render('Testimonials/edit', [
             'testimonial' => $testimonial

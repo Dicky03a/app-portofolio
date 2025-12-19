@@ -17,6 +17,8 @@ class Project extends Model
         'demo_url',
     ];
 
+    protected $appends = ['thumbnail_url', 'tech_stack_array'];
+
     public function getThumbnailUrlAttribute()
     {
         if ($this->thumbnail && Storage::disk('public')->exists($this->thumbnail)) {

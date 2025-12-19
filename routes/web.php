@@ -21,7 +21,17 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+        $stats = [
+            'skillsCount' => \App\Models\Skills::count(),
+            'educationCount' => \App\Models\Education::count(),
+            'certificatesCount' => \App\Models\Certificate::count(),
+            'projectsCount' => \App\Models\Project::count(),
+            'testimonialsCount' => \App\Models\Testimonial::count(),
+        ];
+
+        return Inertia::render('dashboard', [
+            'stats' => $stats
+        ]);
     })->name('dashboard');
     // Route About
     Route::get('/about', [AboutController::class, 'index'])
