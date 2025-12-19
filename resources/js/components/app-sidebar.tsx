@@ -41,7 +41,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Testimonial',
-        href: '/testimonial',
+        href: '/testimonials',
         icon: MailCheck,
     },
 ];

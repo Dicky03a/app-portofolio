@@ -84,11 +84,31 @@ Route::middleware([
     // Route Projects
     Route::get('/projects', [ProjectsController::class, 'index'])
         ->name('projects.index');
+    Route::get('/projects/create', [ProjectsController::class, 'create'])
+        ->name('projects.create');
+    Route::post('/projects', [ProjectsController::class, 'store'])
+        ->name('projects.store');
+    Route::get('/projects/{id}/edit', [ProjectsController::class, 'edit'])
+        ->name('projects.edit');
+    Route::match(['put', 'patch'], '/projects/{id}', [ProjectsController::class, 'update'])
+        ->name('projects.update');
+    Route::delete('/projects/{id}', [ProjectsController::class, 'destroy'])
+        ->name('projects.destroy');
 
 
     // Route Testimonial
-    Route::get('/testimonial', [TestimonialsController::class, 'index'])
-        ->name('testimonial.index');
+    Route::get('/testimonials', [TestimonialsController::class, 'index'])
+        ->name('testimonials.index');
+    Route::get('/testimonials/create', [TestimonialsController::class, 'create'])
+        ->name('testimonials.create');
+    Route::post('/testimonials', [TestimonialsController::class, 'store'])
+        ->name('testimonials.store');
+    Route::get('/testimonials/{id}/edit', [TestimonialsController::class, 'edit'])
+        ->name('testimonials.edit');
+    Route::match(['put', 'patch'], '/testimonials/{id}', [TestimonialsController::class, 'update'])
+        ->name('testimonials.update');
+    Route::delete('/testimonials/{id}', [TestimonialsController::class, 'destroy'])
+        ->name('testimonials.destroy');
 });
 
 require __DIR__ . '/settings.php';
