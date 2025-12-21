@@ -5,6 +5,7 @@ import Education from '@/components/front/Education';
 import Footer from '@/components/front/Footer';
 import Hero from '@/components/front/Hero';
 import Navbar from '@/components/front/Navbar';
+import Pengalaman from '@/components/front/Pengalaman';
 import Projects from '@/components/front/Projects';
 import Skills from '@/components/front/Skills';
 import Testimonials from '@/components/front/Testimonials';
@@ -48,6 +49,7 @@ export default function Home() {
                 <Hero />
                 <About />
                 <Education />
+                <Pengalaman />
                 <Skills />
                 <Certificates />
                 <Projects projects={projects || []} />

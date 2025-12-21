@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
         name: '',
         email: '',
         subject: 'Contact from Portfolio Website',
-        message: ''
+        message: '',
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,11 +18,11 @@ const Contact: React.FC = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { id, value } = e.target;
-        setFormData(prev => ({ ...prev, [id]: value }));
+        setFormData((prev) => ({ ...prev, [id]: value }));
 
         // Clear error when user starts typing
         if (errors[id]) {
-            setErrors(prev => {
+            setErrors((prev) => {
                 const newErrors = { ...prev };
                 delete newErrors[id];
                 return newErrors;
@@ -41,9 +41,9 @@ const Contact: React.FC = () => {
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                    'Accept': 'application/json',
+                    Accept: 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
             });
 
             const data = await response.json();
@@ -196,13 +196,15 @@ const Contact: React.FC = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="text-dark flex w-full items-center justify-center gap-2 rounded-2xl bg-white py-4 text-lg font-bold shadow-lg transition-colors hover:bg-gray-200 disabled:opacity-70"
+                                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-white py-4 text-lg font-bold text-black shadow-lg transition-colors hover:bg-gray-200 disabled:opacity-70"
                             >
                                 {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={20} />
                             </button>
 
                             {message && (
-                                <div className={`mt-4 p-4 rounded-2xl text-center ${message.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                                <div
+                                    className={`mt-4 rounded-2xl p-4 text-center ${message.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}
+                                >
                                     {message.text}
                                 </div>
                             )}

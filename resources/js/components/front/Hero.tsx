@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
                     className="glass-modern mb-8 flex items-center gap-2 rounded-full border border-white/10 px-4 py-2"
                 >
                     <div className="h-2 w-2 animate-pulse rounded-full bg-green-500 shadow-[0_0_10px_rgba(74,222,128,0.5)]" />
-                    <span className="text-sm font-medium tracking-wide text-gray-200">Available for freelance work</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-200">Open To Dekstop</span>
                 </motion.div>
 
                 <motion.h1
