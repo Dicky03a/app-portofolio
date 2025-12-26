@@ -4,7 +4,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { ChartColumnIncreasing, DockIcon, FileCheck, FolderGit2, GraduationCap, LayoutGrid, MailCheck } from 'lucide-react';
+import { Briefcase, ChartColumnIncreasing, DockIcon, FileCheck, FolderGit2, GraduationCap, LayoutGrid, MailCheck } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -27,6 +27,11 @@ const mainNavItems: NavItem[] = [
         title: 'Skills',
         href: '/skills',
         icon: ChartColumnIncreasing,
+    },
+    {
+        title: 'Experience',
+        href: '/pengalamen',
+        icon: Briefcase,
     },
     {
         title: 'Certificate',

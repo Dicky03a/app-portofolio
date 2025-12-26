@@ -5,6 +5,7 @@ use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PengalamanController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\TestimonialsController;
@@ -122,6 +123,22 @@ Route::middleware([
         ->name('testimonials.update');
     Route::delete('/testimonials/{id}', [TestimonialsController::class, 'destroy'])
         ->name('testimonials.destroy');
+
+
+    // Route Pengalaman
+    Route::get('/pengalamen', [PengalamanController::class, 'index'])
+        ->name('pengalaman.index');
+    Route::get('/pengalamen/create', [PengalamanController::class, 'create'])
+        ->name('pengalaman.create');
+    Route::post('/pengalamen', [PengalamanController::class, 'store'])
+        ->name('pengalaman.store');
+    Route::get('/pengalamen/{id}/edit', [PengalamanController::class, 'edit'])
+        ->name('pengalaman.edit');
+    Route::match(['put', 'patch'], '/pengalamen/{id}', [PengalamanController::class, 'update'])
+        ->name('pengalaman.update');
+    Route::delete('/pengalamen/{id}', [PengalamanController::class, 'destroy'])
+        ->name('pengalaman.destroy');
+    // Route Pengalaman End
 });
 
 require __DIR__ . '/settings.php';
