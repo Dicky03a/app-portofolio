@@ -1,9 +1,9 @@
 import React from 'react';
 import { TeamCarousel } from '../TeamCarousel';
 
-export const Pengalaman: React.FC = () => {
+const Pengalaman: React.FC = () => {
     return (
-        <div className="mb-16 pt-8 text-center">
+        <section id="pengalaman" className="pt- mb-16 scroll-mt-24 text-center">
             <h1 className="flex flex-col items-center gap-2">
                 <span className="text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-6xl">My Life Experience</span>
             </h1>
@@ -14,7 +14,7 @@ export const Pengalaman: React.FC = () => {
             </p>
 
             <TeamCarousel />
-        </div>
+        </section>
     );
 };
 
