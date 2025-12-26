@@ -153,7 +153,7 @@ const TeamCard: React.FC<{ member: TeamMember; containerRef: React.RefObject<HTM
             setStyle({
                 transform: `perspective(1200px) rotateY(${rotationY}deg) translateY(${translateY}px) scale(${scale})`,
                 opacity: Math.max(0.4, opacity),
-                zIndex: Math.round(100 - Math.abs(distanceFromCenter / 10)),
+                zIndex: Math.round(40 - Math.abs(distanceFromCenter / 10)),
             });
         };
 
