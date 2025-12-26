@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Certificate;
 use App\Models\Education;
+use App\Models\Pengalaman;
 use App\Models\Project;
 use App\Models\Skills;
 use App\Models\Testimonial;
@@ -22,6 +23,7 @@ class HomeController extends Controller
                   'certificates' => Certificate::orderBy('year', 'desc')->get(),
                   'projects' => Project::orderBy('created_at', 'desc')->get(),
                   'testimonials' => Testimonial::orderBy('created_at', 'desc')->get(),
+                  'pengalamen' => Pengalaman::orderBy("id", "desc")->get(),
             ]);
       }
 }
