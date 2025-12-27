@@ -1,4 +1,4 @@
-# nixpacks.toml — FINAL (Laravel + PHP 8.3)
+# nixpacks.toml — Laravel 12 + PHP 8.3 (FINAL FIX)
 
 [phases.setup]
 nixPkgs = [
@@ -17,7 +17,7 @@ nixPkgs = [
 
 [phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader --no-interaction"
+  "composer install --no-dev --no-scripts --optimize-autoloader --no-interaction"
 ]
 
 [start]
